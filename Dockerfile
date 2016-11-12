@@ -22,12 +22,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure Nginx
-# COPY config/nginx.conf /etc/nginx/nginx.conf
-COPY config/default /etc/nginx/sites-enabled/default
+COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY config/nginx/default /etc/nginx/sites-enabled/default
 
 # Configure PHP-FPM
-COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
-COPY config/www.conf /etc/php/7.0/fpm/pool.d/www.conf
+COPY config/php/php.ini /etc/php7/conf.d/zzz_custom.ini
+COPY config/php/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 
 # Configure Supervisor
