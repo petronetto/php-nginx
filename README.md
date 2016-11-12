@@ -2,7 +2,7 @@ A very lightweight container to PHP Development
 ==============================================
 
 This container is based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/), that is a minimal Ubuntu base image modified for Docker-friendliness.
-*Baseimage-docker only consumes 6 MB RAM and is much powerful than Busybox or Alpine. See why below.*
+*Baseimage-docker **only consumes 6 MB RAM** and is much powerful than Busybox or Alpine. See why below.*
 
 This image contains:
 - Ubuntu (based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/))
