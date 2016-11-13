@@ -21,10 +21,6 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Laravel and Lumen
-RUN composer global require "laravel/installer"
-RUN composer global require "laravel/lumen-installer"
-
 # Configure Nginx
 COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY config/nginx/default /etc/nginx/sites-enabled/default
@@ -33,11 +29,13 @@ COPY config/nginx/default /etc/nginx/sites-enabled/default
 COPY config/php/php.ini /etc/php7/conf.d/zzz_custom.ini
 COPY config/php/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
+
 # Configure Supervisor
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
+ADD src/ /var/www/html/
 
 EXPOSE 80 443
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
