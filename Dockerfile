@@ -35,7 +35,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
-ADD src/ /var/www/html/
+COPY src/ /var/www/html/
 
 EXPOSE 80 443
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
