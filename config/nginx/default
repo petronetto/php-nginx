@@ -6,7 +6,7 @@ server {
     sendfile off;
 
     root /var/www/html/public;
-    index index.php index.html;
+    index index.php index.html/public;
 
     location / {
         # First attempt to serve request as file, then
