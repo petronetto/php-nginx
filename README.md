@@ -16,26 +16,26 @@ Usage
 -----
 Start the container:
 ```bash
-docker run -p 80:80 --name container_name petronetto/php-nginx`
+docker run -p 80:80 --name container_name petronetto/php-nginx
 ```
 
 Start the container with a Laravel/Lumen installation:
 ```bash
 # Laravel
-docker run -p 80:80 --name container_name petronetto/php-nginx:laravel`
+docker run -p 80:80 --name container_name petronetto/php-nginx:laravel
 
 # Lumen
-docker run -p 80:80 --name container_name petronetto/php-nginx:lumen`
+docker run -p 80:80 --name container_name petronetto/php-nginx:lumen
 ```
 
 Using Composer:
 ```bash
-docker run -it container_name composer <command>`
+docker run -it container_name composer <command>
 ```
 
 Using Artisan:
 ```bash
-docker run -it container_name php artisan <command>`
+docker run -it container_name php artisan <command>
 ```
 
 In PHP installation, see the PHP info on http://localhost, or the static html page on http://localhost/test.html, on Laravel/Lumen in http://localhost
