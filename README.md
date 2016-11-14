@@ -16,14 +16,26 @@ Usage
 -----
 Start the container:
 ```bash
-docker run -p 80:80 --name container_name -d petronetto/php-nginx
+# From your project folder
+docker run -p 80:80 --name php \
+           -v $(pwd):/var/www/app \
+           -w /var/www/app \
+           -d petronetto/php-nginx
 ```
 
 Start the container to Laravel development:
 ```bash
-docker run -p 80:80 --name container_name \
-           -v /you/local/folder:/var/www/app \
+# From your project folder
+docker run -p 80:80 -it --name laravel \
+           -v $(pwd):/var/www/app \
+           -w /var/www/app \
            -d petronetto/php-nginx:laravel
+
+# Creating a Larvel project from container
+docker run -it --rm \
+           -v $(pwd):/var/www/app \
+           -w /var/www/app \
+           composer create-project laravel/laravel .
 ```
 
 In PHP installation, see the PHP info on http://localhost, or the static html page on http://localhost/test.html
@@ -32,12 +44,12 @@ In PHP installation, see the PHP info on http://localhost, or the static html pa
 **NOTE**: If you're not running Docker Mac/Windows (which run Docker in a small virtualized layer), you may need to set permissions on the shared directories that Laravel needs to write to. The following will let Laravel write the storage and bootstrap directories:
 
 ```bash
-# From your project directory
-sudo chmod -R o+rw application/bootstrap application/storage
+# From your project folder
+sudo chmod -R o+rw $(pwd)/bootstrap $(pwd)/storage
 ```
 
-Maybe you also need change the project ownership:
+Maybe you also need change the project ownership if you using the container to create the new projects:
 ```bash
-# From your project directory
-sudo chown -R $(whoami) application
+# From your project folder
+sudo chown -R $(whoami) $(pwd)
 ```
