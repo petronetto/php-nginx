@@ -1,4 +1,4 @@
-A very lightweight container to PHP/Laravel/Lumen Development
+A very lightweight container to PHP/Laravel Development
 ==============================================
 
 This container is based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/), that is a minimal Ubuntu base image modified for Docker-friendliness.
@@ -16,29 +16,17 @@ Usage
 -----
 Start the container:
 ```bash
-docker run -p 80:80 --name container_name petronetto/php-nginx
+docker run -p 80:80 --name container_name -d petronetto/php-nginx
 ```
 
-Start the container with a Laravel/Lumen installation:
+Start the container to Laravel development:
 ```bash
-# Laravel
-docker run -p 80:80 --name container_name petronetto/php-nginx:laravel
-
-# Lumen
-docker run -p 80:80 --name container_name petronetto/php-nginx:lumen
+docker run -p 80:80 --name container_name \
+           -v /you/local/folder:/var/www/app \
+           -d petronetto/php-nginx:laravel
 ```
 
-Using Composer:
-```bash
-docker run -it container_name composer <command>
-```
-
-Using Artisan:
-```bash
-docker run -it container_name php artisan <command>
-```
-
-In PHP installation, see the PHP info on http://localhost, or the static html page on http://localhost/test.html, on Laravel/Lumen in http://localhost
+In PHP installation, see the PHP info on http://localhost, or the static html page on http://localhost/test.html
 
 
 **NOTE**: If you're not running Docker Mac/Windows (which run Docker in a small virtualized layer), you may need to set permissions on the shared directories that Laravel needs to write to. The following will let Laravel write the storage and bootstrap directories:
