@@ -35,6 +35,7 @@ docker run -p 80:80 -it --name laravel \
 docker run -it --rm \
            -v $(pwd):/var/www/app \
            -w /var/www/app \
+           petronetto/php-nginx:laravel \
            composer create-project laravel/laravel .
 ```
 
