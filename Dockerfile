@@ -32,9 +32,9 @@ COPY config/php/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 # Configure Supervisor
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN mkdir -p /var/www/html
-WORKDIR /var/www/html
-COPY src/ /var/www/html/
+RUN mkdir -p /var/www/src
+WORKDIR /var/www/src
+COPY src/ /var/www/src/
 
 EXPOSE 80 443
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

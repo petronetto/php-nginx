@@ -18,8 +18,8 @@ Start the container:
 ```bash
 # From your project folder
 docker run -p 8080:80 --name php \
-           -v $(pwd):/var/www/app \
-           -w /var/www/app \
+           -v $(pwd):/var/www/src \
+           -w /var/www/src \
            -d petronetto/php-nginx
 ```
 
@@ -27,19 +27,19 @@ Start the container to Laravel development:
 ```bash
 # From your project folder
 docker run -p 8080:80 -it --name laravel \
-           -v $(pwd):/var/www/app \
-           -w /var/www/app \
+           -v $(pwd):/var/www/src \
+           -w /var/www/src \
            -d petronetto/php-nginx:laravel
 
 # Creating a Larvel project from container
 docker run -it --rm \
-           -v $(pwd):/var/www/app \
-           -w /var/www/app \
+           -v $(pwd):/var/www/src \
+           -w /var/www/src \
            petronetto/php-nginx:laravel \
            composer create-project laravel/laravel .
 ```
 
-In PHP installation, see the PHP info on http://localhost, or the static html page on http://localhost/test.html
+In PHP installation, see the PHP info on http://localhost:8080, or the static html page on http://localhost:8080/test.html
 
 
 **NOTE**: If you're not running Docker Mac/Windows (which run Docker in a small virtualized layer), you may need to set permissions on the shared directories that Laravel needs to write to. The following will let Laravel write the storage and bootstrap directories:
