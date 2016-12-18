@@ -2,19 +2,18 @@ FROM petronetto/ubuntu
 
 MAINTAINER Juliano Petornetto <juliano@petronetto.com.br>
 
-# Configure Ubuntu
-RUN locale-gen pt_BR.UTF-8
-ENV LANG pt_BR.UTF-8
-ENV LANGUAGE pt_BR:en
-ENV LC_ALL pt_BR.UTF-8
+# Configure Ubuntu Language
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Install packages
-RUN apt-get update \
-    && apt-get install -y curl zip unzip git software-properties-common \
-    && add-apt-repository -y ppa:ondrej/php \
+RUN add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
-    && apt-get install -y php7.0-fpm php7.0-cli php7.0-mcrypt php7.0-gd php7.0-mysql \
-      php-redis php7.0-mbstring php7.0-xml php7.0-curl nginx supervisor \
+    && apt-get install -y curl zip unzip git software-properties-common \
+        php7.0-fpm php7.0-cli php7.0-mcrypt php7.0-mysql \
+        php-redis php7.0-mbstring php7.0-xml nginx supervisor \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
     && apt-get remove -y --purge software-properties-common \

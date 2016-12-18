@@ -2,7 +2,7 @@ A very lightweight container to PHP/Laravel Development
 ==============================================
 
 This container is based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/), that is a minimal Ubuntu base image modified for Docker-friendliness.
-_Baseimage-docker **only consumes 6 MB RAM** and is much powerful than Busybox or Alpine. See why below._
+_Baseimage-docker **only consumes 6 MB RAM** and is much powerful than Busybox or Alpine._
 
 This image contains:
 - Ubuntu 14.04 (based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/))
@@ -17,7 +17,7 @@ Usage
 Start the container:
 ```bash
 # From your project folder
-docker run -p 80:80 --name php \
+docker run -p 8080:80 --name php \
            -v $(pwd):/var/www/app \
            -w /var/www/app \
            -d petronetto/php-nginx
@@ -26,7 +26,7 @@ docker run -p 80:80 --name php \
 Start the container to Laravel development:
 ```bash
 # From your project folder
-docker run -p 80:80 -it --name laravel \
+docker run -p 8080:80 -it --name laravel \
            -v $(pwd):/var/www/app \
            -w /var/www/app \
            -d petronetto/php-nginx:laravel
