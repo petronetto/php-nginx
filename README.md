@@ -23,19 +23,13 @@ docker run -p 8080:80 --name php \
            -d petronetto/php-nginx
 ```
 
-Start the container to Laravel development:
+If you need run some command through composer you may use:
 ```bash
-# From your project folder
-docker run -p 8080:80 -it --name laravel \
-           -v $(pwd):/var/www/src \
-           -w /var/www/src \
-           -d petronetto/php-nginx:laravel
-
 # Creating a Larvel project from container
 docker run -it --rm \
            -v $(pwd):/var/www/src \
            -w /var/www/src \
-           petronetto/php-nginx:laravel \
+           petronetto/php-nginx \
            composer create-project laravel/laravel .
 ```
 
