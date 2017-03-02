@@ -11,8 +11,8 @@ ENV LC_ALL en_US.UTF-8
 # Install packages
 RUN add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
-    && apt-get install -y curl zip unzip git software-properties-common \
-        php7.0-fpm php7.0-cli php7.0-mcrypt php7.0-mysql \
+    && apt-get install -y curl zip unzip git software-properties-common ca-certificates \
+        php7.0-fpm php7.0-cli php7.0-mcrypt php7.0-mysql php7.0-pgsql \
         php-redis php7.0-mbstring php7.0-xml nginx supervisor \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
@@ -35,6 +35,11 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir -p /var/www/src
 WORKDIR /var/www/src
 COPY src/ /var/www/src/
+
+# Fix permissions
+RUN usermod -a -G www-data www-data \
+    && chown -Rf www-data:www-data /var/lib/nginx \
+    && chown -Rf www-data:www-data /var/www/src
 
 EXPOSE 80 443
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
