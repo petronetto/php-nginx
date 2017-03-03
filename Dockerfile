@@ -25,7 +25,7 @@ COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY config/nginx/default /etc/nginx/sites-enabled/default
 
 # Configure PHP-FPM
-COPY config/php/php.ini /etc/php/7.0/fpm/conf.d/zzz_custom.ini
+COPY config/php/php.ini /etc/php/7.0/fpm/php.ini
 COPY config/php/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 
