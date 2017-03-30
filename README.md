@@ -1,6 +1,9 @@
 A very lightweight container to PHP/Laravel Development
 ==============================================
 
+[![](https://images.microbadger.com/badges/image/petronetto/php-nginx.svg)](https://microbadger.com/images/petronetto/php-nginx "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/petronetto/php-nginx.svg)](https://microbadger.com/images/petronetto/php-nginx "Get your own version badge on microbadger.com")
+
 This container is based on [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/), that is a minimal Ubuntu base image modified for Docker-friendliness.
 _Baseimage-docker **only consumes 6 MB RAM** and is much powerful than Busybox or Alpine._
 
